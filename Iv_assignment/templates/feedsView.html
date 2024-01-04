@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block baseblock %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed</title>
+
+</head>
+
+<body>
+
+   
+        {% for message in obj %}
+            <div class="pot" style="background-color: rgb(218, 218, 235); padding: 10px; margin-bottom: 10px;">
+                <h1 style="color: white;">{{ i.user }}</h1><br>
+                <h4>{{ message.user }}</h4>
+                <p>{{ message.content }}</p>
+                <div class="p_pot">
+                    {{ message.like_count }} <a href="/like/{{message.id}}/{{user.id}}" class="like-symbol" style="margin-right: 10px;">👍</a>
+                    <a href="/comments/{{ message.id }}/" class="comment-symbol" onclick="openCommentPopup('{{ message.id }}')" style="margin-right: 20px;">💬</a>
+                    {% if user.id == message.user_id %}
+                    <a href="/deleteFeed/{{ message.id }}/" class="comment-symbol" onclick="openCommentPopup('{{ message.id }}')" style="margin-right: 20px;">❌</a>
+                    {%endif%}
+                </div>
+            </div>
+        {% endfor %}
+    {% endblock %}
+
+</body>
+</html>

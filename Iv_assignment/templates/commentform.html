@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% extends 'base_comment.html' %}
+{% load static %}
+
+{% block baseblock %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; 
+        }
+
+        main {
+            flex: 1;
+            padding: 20px; 
+        }
+
+        .footer {
+            background-color: rgb(151, 163, 166);
+            padding: 10px;
+            position: sticky;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        {% for i in obj %}
+            <div class="comment_div" style="background-color: rgb(204, 215, 219); padding: 2px; margin-bottom: 10px;">
+                <h6>{{ i.user }}</h6><br>
+                {{ i.content }}
+            </div>
+        {% endfor %}
+
+        <h1></h1><br><br>
+    </main>
+
+    <div class="footer">
+        <form method="post">
+            {{ form }}
+            <h4>comment</h4>
+            <input type="submit" value="post"> 
+            {% csrf_token %}
+        </form>
+    </div>
+
+</body>
+</html>
+
+{% endblock %}
+</html>

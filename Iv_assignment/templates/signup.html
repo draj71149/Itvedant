@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{%extends 'base.html'%}
+{% load static %}
+{%block baseblock%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .helptext {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="comment_div" style="background-color: rgb(140, 140, 155); padding: 2px; margin-bottom: 10px;" >
+<center>
+<form method="POST">
+    <h1>Sign up  form </h1>
+    {{form.as_p}}
+    {% csrf_token %}
+    <input type="submit">
+</form>
+
+    </center>
+    {%endblock%}
+    </div>
+</body>
+</html>

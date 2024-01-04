@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+{%extends 'base_comment.html'%}
+{% load static %}
+{%block baseblock%}
+<html>
+<head>
+    <title>Login</title>
+</head>
+<center>
+<body>
+    
+    <div class="comment_div" style="background-color: rgb(140, 140, 155); padding: 2px; margin-bottom: 10px;" >
+        <h2>Login</h2>
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Username : </label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Password : </label>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Login">
+    </form>
+    <h1>if you are first visit on this site</h1>
+    <a href="/signup">signup</a>
+</center>
+</div>
+</body>
+{%endblock%}
+</html>
